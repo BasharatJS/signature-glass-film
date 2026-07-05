@@ -1,4 +1,3 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { Logo } from "./Logo";
 
 const links = [
@@ -37,24 +36,16 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex gap-3">
-          {[
-            { label: "Instagram", icon: Instagram },
-            { label: "Facebook", icon: Facebook },
-            { label: "LinkedIn", icon: Linkedin }
-          ].map((social) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={social.label}
-                href="#home"
-                aria-label={social.label}
-                className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.06] text-zinc-300 transition-colors hover:border-gold-400/60 hover:text-gold-300"
-              >
-                <Icon size={18} aria-hidden="true" />
-              </a>
-            );
-          })}
+        <div className="text-sm font-semibold text-zinc-400">
+          Developed by{" "}
+          <a
+            href="https://www.codewithbasharat.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold-400 transition-colors hover:text-gold-300"
+          >
+            CodeWithBasharat.com
+          </a>
         </div>
       </div>
     </footer>

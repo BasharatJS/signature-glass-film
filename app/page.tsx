@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export default function Home() {
   const localBusinessSchema = {
@@ -59,6 +60,7 @@ export default function Home() {
           __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c")
         }}
       />
+      <SmoothScroll />
       <Navbar />
       <Hero />
       <Services />

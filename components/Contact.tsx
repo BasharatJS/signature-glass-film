@@ -5,7 +5,35 @@ import { motion } from "framer-motion";
 import { ButtonLink } from "./ButtonLink";
 import { SectionHeading } from "./SectionHeading";
 
+const whatsappNumber = "919833391153";
+
 export function Contact() {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    const text = [
+      "Hello Signature Glass Films,",
+      "",
+      "I want to enquire about your services.",
+      name ? `Name: ${name}` : "",
+      phone ? `Phone: ${phone}` : "",
+      message ? `Message: ${message}` : ""
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+
   return (
     <section id="contact" className="anchor-offset py-20 sm:py-28">
       <div className="section-shell">
@@ -71,7 +99,11 @@ export function Contact() {
               </ButtonLink>
             </div>
 
-            <form className="mt-8 grid gap-4" aria-label="Contact form">
+            <form
+              className="mt-8 grid gap-4"
+              aria-label="Contact form"
+              onSubmit={handleSubmit}
+            >
               <input
                 className="min-h-12 rounded-2xl border border-white/12 bg-white/[0.06] px-4 text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-gold-400"
                 type="text"
@@ -90,7 +122,7 @@ export function Contact() {
                 placeholder="Message"
               />
               <button
-                type="button"
+                type="submit"
                 className="min-h-12 rounded-full border border-gold-400/50 bg-gold-400/10 px-6 text-sm font-bold text-gold-300 transition-colors hover:bg-gold-400 hover:text-ink-950"
               >
                 Send Message
